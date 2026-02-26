@@ -37,7 +37,7 @@ export default defineConfig([
         typescript: {
           project: './tsconfig.app.json',
         },
-        node: true,
+        //   node: true,
       },
     },
     rules: {

@@ -49,7 +49,24 @@ export default defineConfig([
       'import/named': 'error',
       'import/no-duplicates': 'error',
 
-      'simple-import-sort/imports': 'error',
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^\\u0000'],
+            ['^node:'],
+            ['^@?\\w'],
+            ['^@/pages/'],
+            ['^@/components/'],
+            ['^@/redux/'],
+            ['^@/utils/'],
+            ['^@/ts/'],
+            ['^@/hooks/'],
+            ['^@/'],
+            ['^\\.'],
+          ],
+        },
+      ],
       'simple-import-sort/exports': 'error',
     },
   },

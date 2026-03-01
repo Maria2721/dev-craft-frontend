@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import App from './App.tsx';
-import { persistor, store } from './redux/store.ts';
+import { persistor, store } from '@/redux/store.ts';
+
+import App from '@/App.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

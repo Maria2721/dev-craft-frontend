@@ -4,13 +4,32 @@ The project is an application for preparing for frontend development interviews.
 
 ## Team
 
-- ![Maria](https://github.com/Maria2721)
-- ![Andrey](https://github.com/Andrey-Yurchuk)
-- ![Khabib](https://github.com/Khabib1802)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Maria2721">
+        <img src="https://github.com/Maria2721.png" width="60" height="60" alt="Maria" /><br/>
+        Maria
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Andrey-Yurchuk">
+        <img src="https://github.com/Andrey-Yurchuk.png" width="60" height="60" alt="Andrey" /><br/>
+        Andrey
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Khabib1802">
+        <img src="https://github.com/Khabib1802.png" width="60" height="60" alt="Khabib" /><br/>
+        Khabib
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## Deploy
 
-- deploy link
+- https://dev-craft-frontend.netlify.app/
 
 ## Technology Stack
 

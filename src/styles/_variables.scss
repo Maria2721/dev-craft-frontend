@@ -1,0 +1,46 @@
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f4f5f6;
+  --color-text: #23262f;
+  --color-text-muted: #777e90;
+  --color-text-btn: #fcfcfd;
+  --color-border: #e6e8ec;
+  --color-primary-blue: #3772ff;
+  --color-primary-purple: #9757d7;
+  --color-primary-pink: #ef466f;
+  --color-primary-green: #45b26b;
+  --color-secondary-blue: #4bc9f0;
+  --color-secondary-light: #e4d7cf;
+  --color-secondary-yellow: #ffd166;
+  --color-secondary-purple: #cdb4db;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #141416;
+  --color-surface: #23262f;
+  --color-text: #fcfcfd;
+  --color-text-muted: #777e90;
+  --color-text-btn: #fcfcfd;
+  --color-border: #777e90;
+}
+
+$spacing-xl: 32px;
+$spacing-lg: 24px;
+$spacing-md: 16px;
+$spacing-sm: 8px;
+$spacing-xs: 4px;
+
+$font-size-h1: 64px;
+$font-size-h2: 48px;
+$font-size-h3: 40px;
+$font-size-h4: 32px;
+$font-size-lg: 24px;
+$font-size-base: 16px;
+$font-size-sm: 14px;
+
+$radius-lg: 90px;
+$radius-md: 12px;
+$radius-sm: 8px;
+
+$transition-fast: 0.15s ease-in-out;
+$transition-normal: 0.3s ease;

@@ -1,0 +1,17 @@
+@use "./variables" as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition:
+    background-color $transition-normal,
+    color $transition-normal;
+}

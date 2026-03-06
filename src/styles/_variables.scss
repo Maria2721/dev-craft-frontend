@@ -13,6 +13,35 @@
   --color-secondary-light: #e4d7cf;
   --color-secondary-yellow: #ffd166;
   --color-secondary-purple: #cdb4db;
+
+  --input-bg: var(--color-bg);
+  --input-bg-disabled: color-mix(in srgb, var(--color-text-muted), transparent 50%);
+  --input-border: var(--color-border);
+  --input-border-hover: var(--color-primary-blue);
+  --input-border-focus: var(--color-primary-blue);
+  --input-border-error: var(--color-primary-pink);
+  --input-border-disabled: var(--color-text-muted);
+  --input-text: var(--color-text);
+  --input-text-error: var(--color-primary-pink);
+  --input-placeholder: var(--color-text-muted);
+  --input-label: var(--color-text-muted);
+  --input-helper-text: var(--color-text-muted);
+  --input-error-text: var(--color-primary-pink);
+
+  --btn-primary-bg: var(--color-primary-blue);
+  --btn-primary-blue-darkened: color-mix(in srgb, var(--color-primary-blue), #000000 25%);
+  --btn-primary-bg-hover: var(--btn-primary-blue-darkened);
+  --btn-primary-bg-disabled: color-mix(var(--btn-primary-blue-darkened), transparent 50%);
+  --btn-primary-text: var(--color-text-btn);
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-bg-hover: var(--color-text);
+  --btn-secondary-bg-disabled: color-mix(in srgb, var(--color-text), transparent 50%);
+  --btn-secondary-text: var(--color-text);
+  --btn-secondary-text-hover: var(--color-text-btn);
+  --btn-secondary-text-disabled: var(--color-text-btn);
+  --btn-secondary-border: var(--color-border);
+  --btn-secondary-border-disabled: transparent;
 }
 
 :root[data-theme="dark"] {
@@ -22,6 +51,11 @@
   --color-text-muted: #777e90;
   --color-text-btn: #fcfcfd;
   --color-border: #777e90;
+
+  --btn-secondary-bg-hover: #fcfcfd;
+  --btn-secondary-text-hover: var(--color-surface);
+  --btn-secondary-bg-disabled: color-mix(var(--color-text), transparent 50%);
+  --btn-secondary-text-disabled: var(--color-surface);
 }
 
 $spacing-xl: 32px;

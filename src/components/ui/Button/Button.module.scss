@@ -1,4 +1,4 @@
-@use "@/styles/variables" as *;
+@use '@/styles/variables' as *;
 
 .button {
   display: inline-flex;
@@ -6,9 +6,9 @@
   justify-content: center;
   font-weight: 700;
   line-height: 16px;
-  border-radius: $radius-lg;
-  border: 2px solid transparent;
   background: none;
+  border: 2px solid transparent;
+  border-radius: $radius-lg;
   cursor: pointer;
   transition:
     background-color $transition-fast,

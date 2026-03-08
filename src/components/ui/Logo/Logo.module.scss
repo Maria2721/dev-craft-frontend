@@ -1,0 +1,21 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+
+  img {
+    display: block;
+    height: auto;
+  }
+
+  &.sm img {
+    width: 80px;
+  }
+
+  &.md img {
+    width: 120px;
+  }
+
+  &.lg img {
+    width: 160px;
+  }
+}

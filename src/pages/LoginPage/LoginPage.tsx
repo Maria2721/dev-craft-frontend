@@ -5,17 +5,17 @@ import { Button } from '@/components/ui';
 import { useAppDispatch } from '../../hooks/useRedux';
 import { login } from '../../redux/slices/authSlice';
 
-export default function HomePage() {
+export default function LoginPage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleLoginButton = () => {
     dispatch(login());
-    void navigate('/dashboard');
+    void navigate('/map');
   };
   return (
     <>
-      <h1>Home Page</h1>
+      <h1>Login Page</h1>
       <Button onClick={handleLoginButton}>Login</Button>
     </>
   );

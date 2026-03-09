@@ -10,7 +10,7 @@ interface Props {
 function ProtectedRoute({ children }: Props) {
   const isAuth = useAppSelector((state) => state.auth.isAuthenticated);
   if (!isAuth) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return <>{children}</>;

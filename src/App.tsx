@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Header } from './components/Header/Header';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import { ROUTES } from './constants';
 import InterviewPage from './pages/InterviewPage/InterviewPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import MapPage from './pages/MapPage/MapPage';
@@ -14,11 +15,11 @@ export default function App() {
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Navigate to="/map" replace />}></Route>
-        <Route path="/map" element={<MapPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.MAP} replace />}></Route>
+        <Route path={ROUTES.MAP} element={<MapPage />}></Route>
+        <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
         <Route
-          path="/progress"
+          path={ROUTES.PROGRESS}
           element={
             <ProtectedRoute>
               <ProgressPage />
@@ -26,7 +27,7 @@ export default function App() {
           }
         ></Route>
         <Route
-          path="/interview"
+          path={ROUTES.INTERVIEW}
           element={
             <ProtectedRoute>
               <InterviewPage />
@@ -34,7 +35,7 @@ export default function App() {
           }
         ></Route>
         <Route
-          path="/profile"
+          path={ROUTES.PROFILE}
           element={
             <ProtectedRoute>
               <ProfilePage />

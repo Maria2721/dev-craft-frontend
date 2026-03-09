@@ -1,0 +1,16 @@
+@use '@/styles/variables' as *;
+
+.container {
+  --container-padding: 80px;
+  max-width: calc(#{$container-width} + (var(--container-padding) * 2));
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+
+  @media (max-width: $bp-mobile) {
+    --container-padding: 32px;
+  }
+}
+
+.fluid {
+  max-width: 100%;
+}

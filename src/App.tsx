@@ -4,12 +4,14 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 export default function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
+        <Route path="/register" element={<RegisterPage />}></Route>
         <Route
           path="/dashboard"
           element={

@@ -1,0 +1,29 @@
+@use '@/styles/variables' as *;
+
+.form {
+  max-width: 400px;
+  width: 90%;
+  margin: auto;
+  margin-top: 100px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  background: var(--color-text-btn);
+  border-radius: 20px;
+  box-shadow:
+    0 0 40px rgba(31, 47, 70, 0.12),
+    0 8px 24px rgba(31, 47, 70, 0.08);
+  transition: box-shadow 0.3s ease;
+
+  & > *:last-child {
+    margin-top: 24px;
+  }
+}
+
+.form:hover {
+  box-shadow:
+    0 0 60px rgba(31, 47, 70, 0.16),
+    0 12px 36px rgba(31, 47, 70, 0.12);
+}

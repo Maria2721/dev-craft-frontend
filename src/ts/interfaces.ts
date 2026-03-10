@@ -3,4 +3,15 @@ interface AuthState {
   isAuthenticated: boolean;
 }
 
-export type { AuthState };
+interface RegisterFormInputs {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
+interface RegisterFormProps {
+  onSubmit: (data: RegisterFormInputs) => void | Promise<void>;
+}
+
+export type { AuthState, RegisterFormInputs, RegisterFormProps };

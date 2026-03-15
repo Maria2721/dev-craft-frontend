@@ -4,7 +4,6 @@ import { Container } from '../Container/Container';
 import { Logo } from '../ui';
 import { BurgerButton } from './BurgerButton/BurgerButton';
 import styles from './Header.module.scss';
-import { HeaderActions } from './HeaderActions/HeaderActions';
 import { Navigation } from './Navigation/Navigation';
 
 function Header() {
@@ -15,11 +14,10 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <Container>
+      <Container className={styles.container}>
         <Logo />
 
         <Navigation isOpen={isMenuOpen} onNavigate={closeMenu} />
-        <HeaderActions />
 
         <BurgerButton onClick={toggleMenu} isOpen={isMenuOpen} />
       </Container>

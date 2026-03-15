@@ -16,11 +16,11 @@ const useMenu = (breakpoint: number) => {
     };
 
     document.body.style.overflow = 'hidden';
-    document.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       document.body.style.overflow = '';
-      document.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [breakpoint, isMenuOpen, closeMenu]);
 

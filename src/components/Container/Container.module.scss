@@ -1,7 +1,7 @@
 @use '@/styles/variables' as *;
 
 .container {
-  --container-padding: 80px;
+  --container-padding: clamp(32px, 6.44vw + 7.8px, 80px);
   max-width: calc(#{$container-width} + (var(--container-padding) * 2));
   margin: 0 auto;
   padding: 0 var(--container-padding);

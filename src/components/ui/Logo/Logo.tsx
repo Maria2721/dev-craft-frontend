@@ -9,9 +9,9 @@ interface LogoProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   className?: string;
 }
 
-function Logo({ variant = 'full', className }: LogoProps) {
+function Logo({ variant = 'full', className, ...props }: LogoProps) {
   return (
-    <Link to="/" className={clsx(styles.logo, styles[variant], className)}>
+    <Link to="/" className={clsx(styles.logo, styles[variant], className)} {...props}>
       <img src="/logo.svg" alt="" />
       <span>DevCraft</span>
     </Link>

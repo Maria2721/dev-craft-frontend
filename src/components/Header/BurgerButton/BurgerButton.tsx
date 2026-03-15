@@ -1,15 +1,18 @@
-import { Button } from '../../ui';
+import clsx from 'clsx';
+import type { ButtonHTMLAttributes } from 'react';
 
-type Props = {
+import styles from './BurgerButton.module.scss';
+
+interface BurgerButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isOpen: boolean;
-  onClick: () => void;
-};
+}
 
-function BurgerButton({ isOpen, onClick }: Props) {
+function BurgerButton({ isOpen, onClick, ...props }: BurgerButtonProps) {
   return (
-    <Button variant={'secondary'} onClick={onClick}>
-      {isOpen ? '✕' : '☰'}
-    </Button>
+    <button className={clsx(styles.burger, isOpen && styles.open)} onClick={onClick} {...props}>
+      <span className={styles.line} />
+      <span className={styles.line} />
+    </button>
   );
 }
 

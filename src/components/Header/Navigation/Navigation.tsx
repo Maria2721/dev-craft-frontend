@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import type { HTMLAttributes } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { NAV_LINKS } from '@/constants';
+import { ROUTES } from '@/constants';
 
 import { HeaderActions } from '../HeaderActions/HeaderActions';
 import styles from './Navigation.module.scss';
@@ -13,6 +13,12 @@ interface NavigationProps extends HTMLAttributes<HTMLElement> {
 }
 
 function Navigation({ isOpen, onNavigate, ...props }: NavigationProps) {
+  const NAV_LINKS = [
+    { label: 'Knowledge Map', to: ROUTES.MAP },
+    { label: 'Progress', to: ROUTES.PROGRESS },
+    { label: 'Interview', to: ROUTES.INTERVIEW },
+  ];
+
   return (
     <nav className={clsx(styles.nav, isOpen && styles.open)} {...props}>
       <ul className={styles.list}>

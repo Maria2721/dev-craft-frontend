@@ -1,4 +1,7 @@
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
@@ -22,6 +25,14 @@ export default function App() {
         ></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        theme="colored"
+        newestOnTop
+        pauseOnFocusLoss
+      />
     </div>
   );
 }

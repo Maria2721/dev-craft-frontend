@@ -7,6 +7,8 @@ interface LoaderProps {
   className?: string;
 }
 
-export const Loader = ({ size = 'md', className }: LoaderProps) => {
+function Loader({ size = 'md', className }: LoaderProps) {
   return <span className={clsx(styles.loader, styles[size], className)} />;
-};
+}
+
+export { Loader };

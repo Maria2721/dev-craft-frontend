@@ -44,7 +44,7 @@
   --btn-secondary-border-disabled: transparent;
 }
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   --color-bg: #141416;
   --color-surface: #23262f;
   --color-text: #fcfcfd;
@@ -78,3 +78,11 @@ $radius-sm: 8px;
 
 $transition-fast: 0.15s ease-in-out;
 $transition-normal: 0.3s ease;
+
+$bp-desktop: 1024px;
+$bp-tablet: 768px;
+$bp-mobile: 375px;
+
+$container-width: 1120px;
+$padding-tablet: 40px;
+$padding-mobile: 16px;

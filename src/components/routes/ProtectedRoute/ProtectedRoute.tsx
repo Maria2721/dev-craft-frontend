@@ -1,7 +1,9 @@
 import { type ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { useAppSelector } from '../../hooks/useRedux';
+import { ROUTES } from '@/constants';
+
+import { useAppSelector } from '../../../hooks/useRedux';
 
 interface Props {
   children: ReactNode;
@@ -10,7 +12,7 @@ interface Props {
 function ProtectedRoute({ children }: Props) {
   const isAuth = useAppSelector((state) => state.auth.isAuthenticated);
   if (!isAuth) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={ROUTES.LOGIN} replace />;
   }
 
   return <>{children}</>;

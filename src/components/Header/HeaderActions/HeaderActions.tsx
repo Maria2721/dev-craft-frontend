@@ -19,6 +19,11 @@ function HeaderActions({ onNavigate, className, ...props }: HeaderActionsProps) 
 
   return (
     <div className={className} {...props}>
+      {!isAuth && (
+        <Link to={ROUTES.REGISTER} onClick={onNavigate}>
+          <Button size="sm">Register</Button>
+        </Link>
+      )}
       <Link to={to} onClick={onNavigate}>
         <Button size="sm">{label}</Button>
       </Link>

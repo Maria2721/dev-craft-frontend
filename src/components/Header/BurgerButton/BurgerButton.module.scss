@@ -1,0 +1,48 @@
+@use '@/styles/variables' as *;
+
+.burger {
+  position: relative;
+  display: none;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover .line {
+    background: var(--color-primary-blue);
+  }
+
+  @media (max-width: $bp-tablet) {
+    display: block;
+  }
+}
+
+.line {
+  position: absolute;
+  left: 6px;
+  width: 20px;
+  height: 2px;
+  background: var(--color-text-muted);
+  border-radius: 2px;
+  transition: all $transition-normal;
+
+  &:first-child {
+    top: 12px;
+  }
+
+  &:last-child {
+    top: 19px;
+  }
+
+  .burger.open & {
+    top: 15px;
+
+    &:first-child {
+      transform: rotate(45deg);
+    }
+    &:last-child {
+      transform: rotate(-45deg);
+    }
+  }
+}

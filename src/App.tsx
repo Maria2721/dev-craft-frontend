@@ -1,20 +1,44 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { Header } from './components/Header/Header';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
-import DashboardPage from './pages/DashboardPage/DashboardPage';
-import HomePage from './pages/HomePage/HomePage';
+import { ROUTES } from './constants';
+import InterviewPage from './pages/InterviewPage/InterviewPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import MapPage from './pages/MapPage/MapPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import ProgressPage from './pages/ProgressPage/ProgressPage';
 
 export default function App() {
   return (
     <div>
+      <Header />
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
+        <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.MAP} replace />}></Route>
+        <Route path={ROUTES.MAP} element={<MapPage />}></Route>
+        <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
         <Route
-          path="/dashboard"
+          path={ROUTES.PROGRESS}
           element={
             <ProtectedRoute>
-              <DashboardPage />
+              <ProgressPage />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path={ROUTES.INTERVIEW}
+          element={
+            <ProtectedRoute>
+              <InterviewPage />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path={ROUTES.PROFILE}
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
             </ProtectedRoute>
           }
         ></Route>

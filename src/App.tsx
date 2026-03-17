@@ -1,23 +1,57 @@
+import 'react-toastify/dist/ReactToastify.css';
+
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import { Header } from './components/Header/Header';
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from './components/routes/ProtectedRoute/ProtectedRoute';
+import PublicRoute from './components/routes/PublicRoute/PublicRoute';
 import { ROUTES } from './constants';
+import { useAppDispatch } from './hooks/useRedux';
 import InterviewPage from './pages/InterviewPage/InterviewPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import MapPage from './pages/MapPage/MapPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ProgressPage from './pages/ProgressPage/ProgressPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import { login } from './redux/slices/authSlice';
+import { getAccessToken } from './utils/tokenStorage';
 
 export default function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const token = getAccessToken();
+
+    if (token) {
+      dispatch(login());
+    }
+  }, [dispatch]);
+
   return (
     <div>
       <Header />
       <Routes>
         <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.MAP} replace />}></Route>
         <Route path={ROUTES.MAP} element={<MapPage />}></Route>
-        <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
+        <Route
+          path={ROUTES.REGISTER}
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        ></Route>
+        <Route
+          path={ROUTES.LOGIN}
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        ></Route>
         <Route
           path={ROUTES.PROGRESS}
           element={
@@ -44,6 +78,14 @@ export default function App() {
         ></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        theme="colored"
+        newestOnTop
+        pauseOnFocusLoss
+      />
     </div>
   );
 }

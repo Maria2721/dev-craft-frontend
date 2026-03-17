@@ -35,7 +35,7 @@ function Navigation({ isOpen, onNavigate, ...props }: NavigationProps) {
         ))}
       </ul>
 
-      <HeaderActions onNavigate={onNavigate} />
+      <HeaderActions onNavigate={onNavigate} className={styles.buttons} />
     </nav>
   );
 }

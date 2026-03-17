@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui';
 
+import { ROUTES } from '@/constants';
+
 import { useAppDispatch } from '../../hooks/useRedux';
 import { login } from '../../redux/slices/authSlice';
 
@@ -11,8 +13,9 @@ export default function LoginPage() {
 
   const handleLoginButton = () => {
     dispatch(login());
-    void navigate('/map');
+    void navigate(ROUTES.HOME);
   };
+
   return (
     <>
       <h1>Login Page</h1>

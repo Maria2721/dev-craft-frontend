@@ -7,9 +7,6 @@ import styles from './LoginForm.module.scss';
 
 const EMAIL_VALID_FORMAT = /^\S+@\S+\.\S+$/;
 const MIN_PASSWORD_LENGTH = 6;
-const LETTER_REGEX = /[A-Za-z]/;
-const DIGIT_REGEX = /\d/;
-const SPECIAL_CHAR_REGEX = /[!@#$%^&*()_+\-=[\]{}|;:'",.<>/?]/;
 
 const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const {
@@ -45,21 +42,12 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
       <Input
         label="Password"
         type="password"
-        autoComplete="new-password"
+        autoComplete="current-password"
         {...register('password', {
           required: 'Password is required',
           minLength: {
             value: MIN_PASSWORD_LENGTH,
             message: `Minimum ${MIN_PASSWORD_LENGTH} characters`,
-          },
-          validate: {
-            oneEnglishLetter: (value) =>
-              LETTER_REGEX.test(value) || 'Password must contain at least one English letter',
-            oneDigit: (value) =>
-              DIGIT_REGEX.test(value) || 'Password must contain at least one number',
-            oneSpecialCharacter: (value) =>
-              SPECIAL_CHAR_REGEX.test(value) ||
-              'Password must contain at least one special character (!@#$%^&*...)',
           },
         })}
         error={errors.password?.message}

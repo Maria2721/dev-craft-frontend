@@ -1,25 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Button } from '@/components/ui';
+import LoginForm from '@/components/forms/LoginForm/LoginForm';
+
+import type { LoginFormInputs } from '@/ts/interfaces';
+
+import { useLogin } from '@/hooks/useLogin';
 
 import { ROUTES } from '@/constants';
 
-import { useAppDispatch } from '../../hooks/useRedux';
-import { login } from '../../redux/slices/authSlice';
-
 export default function LoginPage() {
-  const dispatch = useAppDispatch();
+  const { loginAccount } = useLogin();
   const navigate = useNavigate();
 
-  const handleLoginButton = () => {
-    dispatch(login());
+  const handleLogin = async (data: LoginFormInputs) => {
+    await loginAccount(data);
     void navigate(ROUTES.HOME);
   };
 
-  return (
-    <>
-      <h1>Login Page</h1>
-      <Button onClick={handleLoginButton}>Login</Button>
-    </>
-  );
+  return <LoginForm onSubmit={handleLogin} />;
 }

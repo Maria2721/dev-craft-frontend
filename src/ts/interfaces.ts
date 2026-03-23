@@ -45,11 +45,22 @@ interface CustomAxiosRequestConfig extends AxiosRequestConfig {
   _retry?: boolean;
 }
 
+interface LoginFormInputs {
+  email: string;
+  password: string;
+}
+
+interface LoginFormProps {
+  onSubmit: (data: LoginFormInputs) => void | Promise<void>;
+}
+
 export type {
   ApiError,
   AuthResponse,
   AuthState,
   CustomAxiosRequestConfig,
+  LoginFormInputs,
+  LoginFormProps,
   RefreshResponse,
   RegisterFormInputs,
   RegisterFormProps,

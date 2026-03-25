@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui';
 
+import { closeAI } from '@/redux/slices/aiSlice';
 import { logout } from '@/redux/slices/authSlice';
 
 import { clearTokens } from '@/utils/tokenStorage';
@@ -16,6 +17,7 @@ export default function ProfilePage() {
 
   const handleLogoutButton = () => {
     clearTokens();
+    dispatch(closeAI());
     dispatch(logout());
     void navigate(ROUTES.HOME);
   };

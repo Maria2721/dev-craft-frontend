@@ -33,7 +33,7 @@ interface AuthResponse {
 interface ApiError {
   statusCode: number;
   message: string;
-  errors?: string[];
+  error?: string;
 }
 
 interface RefreshResponse {
@@ -53,8 +53,40 @@ interface LoginFormInputs {
 interface LoginFormProps {
   onSubmit: (data: LoginFormInputs) => void | Promise<void>;
 }
+interface AIState {
+  isOpen: boolean;
+}
+
+interface AIMessage {
+  id: string;
+  role: 'user' | 'ai';
+  text: string;
+  createdAt?: string;
+}
+
+interface AIChatRequest {
+  message: string;
+  conversationId?: string;
+  context?: {
+    taskId: string;
+    taskType: string;
+    taskTitle: string;
+    taskDescription: string;
+    codeSnippet: string;
+  };
+}
+
+interface AIChatResponse {
+  conversationId: string;
+  messageId: string;
+  reply: string;
+}
 
 export type {
+  AIChatRequest,
+  AIChatResponse,
+  AIMessage,
+  AIState,
   ApiError,
   AuthResponse,
   AuthState,

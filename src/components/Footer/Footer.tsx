@@ -21,8 +21,10 @@ function Footer() {
     <footer className={styles.footer}>
       <Container className={styles.container}>
         <div className={styles.left}>
-          <img src="/rsschool-logo.svg" alt="RS School logo" className={styles.logo} />
-          <span className={styles.school}>RS School</span>
+          <a className={styles.schoolLink} href="https://rs.school/">
+            <img src="/rsschool-logo.svg" alt="RS School logo" className={styles.logo} />
+            <span className={styles.school}>RS School</span>
+          </a>
           <span className={styles.year}>2026</span>
         </div>
 

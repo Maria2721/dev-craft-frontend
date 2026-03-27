@@ -3,20 +3,20 @@
 .footer {
   border-top: 1px solid var(--color-border);
   background: var(--color-bg);
-  padding-block: 20px;
+  padding-block: $spacing-lg;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: $spacing-lg;
 }
 
 .left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: $spacing-lg;
 }
 
 .logo {
@@ -25,33 +25,49 @@
   object-fit: contain;
 }
 
+.schoolLink {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color $transition-fast;
+}
+
+.schoolLink:hover {
+  color: var(--color-primary-blue);
+}
+
 .school {
   font-weight: 600;
+  font-size: $font-size-base;
 }
 
 .year {
   color: var(--color-text-muted);
+  font-size: $font-size-sm;
 }
 
 .right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: $radius-md;
 }
 
 .developers {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: $font-size-sm;
 }
 
 .link {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: $spacing-sm;
   color: var(--color-text);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color $transition-fast;
+  font-size: $font-size-sm;
 }
 
 .link:hover {
@@ -68,17 +84,17 @@
   .container {
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: $spacing-md;
   }
 
   .right {
     flex-direction: column;
-    gap: 6px;
+    gap: $spacing-sm;
     order: -1;
   }
 
   .developers {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: $radius-sm;
   }
 }

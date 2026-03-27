@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
+import { AIAssistantProvider } from './components/AIAssistant/AIAssistantProvider';
 import { Layout } from './components/Layout/Layout';
 import ProtectedRoute from './components/routes/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/routes/PublicRoute/PublicRoute';
@@ -93,6 +94,7 @@ export default function App() {
         newestOnTop
         pauseOnFocusLoss
       />
+      <AIAssistantProvider />
     </>
   );
 }

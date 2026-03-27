@@ -1,0 +1,55 @@
+@use '@/styles/variables' as *;
+
+.button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+
+  background: var(--color-primary-blue);
+  color: var(--color-bg);
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+
+  z-index: 9999;
+
+  transition:
+    width 0.3s ease-in-out,
+    border-radius 0.3s ease-in-out;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-left: 15px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  span {
+    margin-left: 12px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  &:hover {
+    width: 180px;
+    border-radius: 30px;
+
+    span {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}

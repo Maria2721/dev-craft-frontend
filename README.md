@@ -27,6 +27,12 @@ The project is an application for preparing for frontend development interviews.
   </tr>
 </table>
 
+## Meeting notes
+
+- [2026-02-20 — Project kickoff](meeting-notes/2026-02-20-sync-project-kickoff.md)
+- [2026-02-23 — Roadmap and UI](meeting-notes/2026-02-23-sync-roadmap-and-ui.md)
+- [2026-03-17 — AI and knowledge base](meeting-notes/2026-03-17-sync-ai-and-knowledge.md)
+
 ## Deploy
 
 - https://dev-craft-frontend.netlify.app/

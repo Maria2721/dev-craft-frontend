@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import { Header } from './components/Header/Header';
+import { Layout } from './components/Layout/Layout';
 import ProtectedRoute from './components/routes/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/routes/PublicRoute/PublicRoute';
 import { ROUTES } from './constants';
@@ -31,19 +31,42 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <div>
-      <Header />
+    <>
       <Routes>
-        <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.MAP} replace />}></Route>
-        <Route path={ROUTES.MAP} element={<MapPage />}></Route>
-        <Route
-          path={ROUTES.REGISTER}
-          element={
-            <PublicRoute>
-              <RegisterPage />
-            </PublicRoute>
-          }
-        ></Route>
+        <Route element={<Layout />}>
+          <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.MAP} replace />} />
+          <Route path={ROUTES.MAP} element={<MapPage />} />
+
+          <Route
+            path={ROUTES.PROGRESS}
+            element={
+              <ProtectedRoute>
+                <ProgressPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.INTERVIEW}
+            element={
+              <ProtectedRoute>
+                <InterviewPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.PROFILE}
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+
         <Route
           path={ROUTES.LOGIN}
           element={
@@ -51,32 +74,16 @@ export default function App() {
               <LoginPage />
             </PublicRoute>
           }
-        ></Route>
+        />
+
         <Route
-          path={ROUTES.PROGRESS}
+          path={ROUTES.REGISTER}
           element={
-            <ProtectedRoute>
-              <ProgressPage />
-            </ProtectedRoute>
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
           }
-        ></Route>
-        <Route
-          path={ROUTES.INTERVIEW}
-          element={
-            <ProtectedRoute>
-              <InterviewPage />
-            </ProtectedRoute>
-          }
-        ></Route>
-        <Route
-          path={ROUTES.PROFILE}
-          element={
-            <ProtectedRoute>
-              <ProfilePage />
-            </ProtectedRoute>
-          }
-        ></Route>
-        <Route path="*" element={<NotFoundPage />}></Route>
+        />
       </Routes>
 
       <ToastContainer
@@ -86,6 +93,6 @@ export default function App() {
         newestOnTop
         pauseOnFocusLoss
       />
-    </div>
+    </>
   );
 }

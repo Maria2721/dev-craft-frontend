@@ -1,0 +1,84 @@
+@use '@/styles/variables' as *;
+
+.footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding-block: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.school {
+  font-weight: 600;
+}
+
+.year {
+  color: var(--color-text-muted);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.developers {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--color-primary-blue);
+}
+
+.icon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: $bp-tablet) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .right {
+    flex-direction: column;
+    gap: 6px;
+    order: -1;
+  }
+
+  .developers {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

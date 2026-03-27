@@ -1,0 +1,73 @@
+<svg
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="xMidYMid meet"
+>
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="30%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+
+    <linearGradient id="grad2" x1="100%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="30%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+
+    <linearGradient id="grad3" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="30%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+
+    <linearGradient id="grad4" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="30%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+
+    <linearGradient id="grad5" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="30%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+
+    <linearGradient id="grad6" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="30%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0, 512) scale(0.1, -0.1)">
+    <path
+      d="M2455 5081 c-38 -21 -124 -70 -190 -108 l-120 -69 -3 -878 c-1 -482 1 -875 5 -873 5 2 439 253 966 557 773 446 956 555 945 565 -14 13 -1353 787 -1425 824 -60 30 -97 27 -178 -18z"
+      fill="url(#grad1)"
+    />
+    <path
+      d="M1115 4309 c-390 -225 -721 -417 -733 -425 -13 -9 -33 -35 -43 -59 -17 -39 -19 -65 -17 -251 l3 -208 595 -344 c327 -188 668 -385 758 -437 l162 -94 0 1114 c0 613 -3 1115 -7 1115 -5 0 -327 -185 -718 -411z"
+      fill="url(#grad2)"
+    />
+    <path
+      d="M3618 3657 c-411 -238 -746 -436 -745 -440 1 -4 434 -257 962 -562 l960 -554 3 837 c2 738 1 842 -13 878 -9 23 -23 48 -33 57 -24 22 -365 217 -377 216 -5 0 -346 -195 -757 -432z"
+      fill="url(#grad3)"
+    />
+    <path
+      d="M320 2177 l0 -843 23 -44 c20 -40 36 -53 162 -127 77 -45 163 -94 190 -109 l50 -27 753 434 c413 239 750 438 749 442 -2 7 -1800 1051 -1899 1103 l-28 15 0 -844z"
+      fill="url(#grad4)"
+    />
+    <path
+      d="M3280 1513 c0 -995 2 -1115 15 -1109 19 7 1376 789 1428 823 70 44 78 79 75 320 l-3 208 -525 303 c-289 167 -630 363 -757 437 l-233 134 0 -1116z"
+      fill="url(#grad5)"
+    />
+    <path
+      d="M2012 1413 c-762 -440 -960 -559 -950 -568 13 -12 1373 -798 1435 -829 41 -20 85 -20 126 0 83 42 350 199 353 209 2 5 3 400 2 877 l-3 867 -963 -556z"
+      fill="url(#grad6)"
+    />
+  </g>
+</svg>

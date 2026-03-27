@@ -1,0 +1,100 @@
+@use '@/styles/variables' as *;
+
+.footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding-block: $spacing-lg;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.schoolLink {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color $transition-fast;
+}
+
+.schoolLink:hover {
+  color: var(--color-primary-blue);
+}
+
+.school {
+  font-weight: 600;
+  font-size: $font-size-base;
+}
+
+.year {
+  color: var(--color-text-muted);
+  font-size: $font-size-sm;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: $radius-md;
+}
+
+.developers {
+  display: flex;
+  align-items: center;
+  gap: $font-size-sm;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color $transition-fast;
+  font-size: $font-size-sm;
+}
+
+.link:hover {
+  color: var(--color-primary-blue);
+}
+
+.icon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: $bp-tablet) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  .right {
+    flex-direction: column;
+    gap: $spacing-sm;
+    order: -1;
+  }
+
+  .developers {
+    flex-wrap: wrap;
+    gap: $radius-sm;
+  }
+}

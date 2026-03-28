@@ -6,6 +6,7 @@ import styles from './Button.module.scss';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'sm';
+  isActive?: boolean;
 }
 
 function Button({
@@ -13,13 +14,22 @@ function Button({
   variant = 'primary',
   size = 'md',
   type = 'button',
+  isActive = false,
   children,
   ...props
 }: ButtonProps) {
   return (
     <button
       type={type}
-      className={clsx(styles.button, styles[variant], styles[size], className)}
+      className={clsx(
+        styles.button,
+        styles[variant],
+        styles[size],
+        {
+          [styles.active]: isActive,
+        },
+        className,
+      )}
       {...props}
     >
       {children}

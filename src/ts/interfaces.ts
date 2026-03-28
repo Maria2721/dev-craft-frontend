@@ -115,6 +115,10 @@ interface TopicPreview {
   codeTasks: CodeTask[];
 }
 
+interface LocationState {
+  topicId: string;
+}
+
 export type {
   AIChatRequest,
   AIChatResponse,
@@ -124,6 +128,7 @@ export type {
   AuthResponse,
   AuthState,
   CustomAxiosRequestConfig,
+  LocationState,
   LoginFormInputs,
   LoginFormProps,
   RefreshResponse,

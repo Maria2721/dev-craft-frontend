@@ -6,6 +6,7 @@ const ROUTES = {
   PROGRESS: '/progress',
   INTERVIEW: '/interview',
   PROFILE: '/profile',
+  TOPIC: '/topics/:slug',
 };
 
 export { ROUTES };

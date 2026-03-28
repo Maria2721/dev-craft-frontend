@@ -82,6 +82,39 @@ interface AIChatResponse {
   reply: string;
 }
 
+interface TopicShort {
+  id: string;
+  slug: string;
+  title: string;
+  description: string | null;
+  order: number;
+}
+
+interface Topic extends TopicShort {
+  questionsCount: number;
+  codeTasksCount: number;
+}
+
+interface Question {
+  id: string;
+  prompt: string;
+  order: number;
+}
+
+interface CodeTask {
+  id: string;
+  title: string;
+  description: string;
+  taskType: 'AI_CHECK' | 'DRAG_DROP';
+  order: number;
+}
+
+interface TopicPreview {
+  topic: TopicShort;
+  questions: Question[];
+  codeTasks: CodeTask[];
+}
+
 export type {
   AIChatRequest,
   AIChatResponse,
@@ -96,4 +129,6 @@ export type {
   RefreshResponse,
   RegisterFormInputs,
   RegisterFormProps,
+  Topic,
+  TopicPreview,
 };

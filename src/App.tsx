@@ -66,25 +66,25 @@ export default function App() {
           />
 
           <Route path="*" element={<NotFoundPage />} />
+
+          <Route
+            path={ROUTES.LOGIN}
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.REGISTER}
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            }
+          />
         </Route>
-
-        <Route
-          path={ROUTES.LOGIN}
-          element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
-
-        <Route
-          path={ROUTES.REGISTER}
-          element={
-            <PublicRoute>
-              <RegisterPage />
-            </PublicRoute>
-          }
-        />
       </Routes>
 
       <ToastContainer

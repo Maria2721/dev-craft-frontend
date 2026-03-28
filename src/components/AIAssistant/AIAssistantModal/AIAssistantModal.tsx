@@ -31,9 +31,10 @@ export const AIAssistantModal = ({ isOpen, onClose }: AIModalProps) => {
     if (!input.trim()) return;
 
     const userId = crypto.randomUUID();
+    const userInput = input;
 
-    await sendMessage(input, userId);
     setInput('');
+    await sendMessage(userInput, userId);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

@@ -30,7 +30,8 @@
     color: var(--btn-primary-text);
     background-color: var(--btn-primary-bg);
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled),
+    &.active {
       background-color: var(--btn-primary-bg-hover);
     }
 
@@ -45,7 +46,8 @@
     background-color: var(--btn-secondary-bg);
     border-color: var(--btn-secondary-border);
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled),
+    &.active {
       color: var(--btn-secondary-text-hover);
       background-color: var(--btn-secondary-bg-hover);
       border-color: transparent;

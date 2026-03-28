@@ -7,4 +7,6 @@ type AIModalProps = {
   onClose: () => void;
 };
 
-export type { AIModalProps, ClickProps };
+type TabType = 'theory' | 'code' | 'overview';
+
+export type { AIModalProps, ClickProps, TabType };

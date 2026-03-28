@@ -17,6 +17,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ProgressPage from './pages/ProgressPage/ProgressPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import TopicPage from './pages/TopicPage/TopicPage';
 import { login } from './redux/slices/authSlice';
 import { getAccessToken } from './utils/tokenStorage';
 
@@ -65,26 +66,35 @@ export default function App() {
             }
           />
 
+          <Route
+            path={ROUTES.TOPIC}
+            element={
+              <ProtectedRoute>
+                <TopicPage />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="*" element={<NotFoundPage />} />
+
+          <Route
+            path={ROUTES.LOGIN}
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.REGISTER}
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            }
+          />
         </Route>
-
-        <Route
-          path={ROUTES.LOGIN}
-          element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
-
-        <Route
-          path={ROUTES.REGISTER}
-          element={
-            <PublicRoute>
-              <RegisterPage />
-            </PublicRoute>
-          }
-        />
       </Routes>
 
       <ToastContainer

@@ -147,6 +147,34 @@ interface QuestionCardProps {
   options: Option[];
   selectedAnswers: string[];
   onSelect: (optionId: string) => void;
+  result: QuestionResult;
+  loading: boolean;
+  onCheck: () => void;
+}
+
+interface QuestionResult {
+  isCorrect: boolean;
+  correctOptionIds?: string[];
+}
+
+interface TheoryQuestionsResult {
+  questionId: string;
+  selectedOptionIds: string[];
+  correctOptionIds: string[];
+  isCorrect: boolean;
+}
+
+interface TheoryQuestionsResponse {
+  results: TheoryQuestionsResult[];
+  summary: {
+    submitted: number;
+    correct: number;
+  };
+  topicProgress: {
+    totalQuestions: number;
+    attempted: number;
+    correct: number;
+  };
 }
 
 export type {
@@ -162,10 +190,12 @@ export type {
   LoginFormInputs,
   LoginFormProps,
   QuestionCardProps,
+  QuestionResult,
   RefreshResponse,
   RegisterFormInputs,
   RegisterFormProps,
   TheoryQuestions,
+  TheoryQuestionsResponse,
   Topic,
   TopicPreview,
 };

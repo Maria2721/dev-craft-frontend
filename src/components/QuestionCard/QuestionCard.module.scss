@@ -41,6 +41,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .option {
@@ -62,13 +63,41 @@
   }
 }
 
+.label {
+  font-weight: 700;
+  color: var(--color-primary-purple);
+  min-width: 20px;
+}
+
 .selected {
   border: 2px solid var(--color-primary-purple);
   background: var(--color-secondary-purple);
 }
 
-.label {
-  font-weight: 700;
-  color: var(--color-primary-purple);
-  min-width: 20px;
+.correct {
+  border-color: var(--color-primary-green);
+  background: var(--color-border);
+}
+
+.wrong {
+  border-color: var(--color-primary-pink);
+  background: var(--color-border);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.result {
+  font-weight: 600;
+}
+
+.success {
+  color: var(--color-primary-green);
+}
+
+.error {
+  color: var(--color-primary-pink);
 }

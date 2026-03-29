@@ -1,4 +1,9 @@
-import type { TheoryQuestions, Topic, TopicPreview } from '@/ts/interfaces';
+import type {
+  TheoryQuestions,
+  TheoryQuestionsResponse,
+  Topic,
+  TopicPreview,
+} from '@/ts/interfaces';
 
 import { api } from './axiosInstance';
 
@@ -14,5 +19,25 @@ export const getTopicPreview = async (topicId: string): Promise<TopicPreview> =>
 
 export const getTheoryQuestions = async (topicId: string): Promise<TheoryQuestions> => {
   const response = await api.get<TheoryQuestions>(`/knowledge/topics/${topicId}/questions`);
+  return response.data;
+};
+
+export const postTheoryQuestions = async (
+  topicId: string,
+  questionId: string,
+  selectedOptionIds: string[],
+): Promise<TheoryQuestionsResponse> => {
+  const response = await api.post<TheoryQuestionsResponse>(
+    `/knowledge/topics/${topicId}/questions/attempts`,
+    {
+      attempts: [
+        {
+          questionId: questionId,
+          selectedOptionIds: selectedOptionIds,
+        },
+      ],
+    },
+  );
+
   return response.data;
 };

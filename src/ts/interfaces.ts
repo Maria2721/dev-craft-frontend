@@ -115,6 +115,27 @@ interface TopicPreview {
   codeTasks: CodeTask[];
 }
 
+interface Option {
+  id: string;
+  label: string;
+  text: string;
+  order: number;
+}
+
+interface Question {
+  id: string;
+  prompt: string;
+  codeSnippet: string | null;
+  order: number;
+  options: Option[];
+  correctOptionIds: string[];
+}
+
+interface TheoryQuestions {
+  topic: TopicShort;
+  questions: Question[];
+}
+
 interface LocationState {
   topicId: string;
 }
@@ -134,6 +155,7 @@ export type {
   RefreshResponse,
   RegisterFormInputs,
   RegisterFormProps,
+  TheoryQuestions,
   Topic,
   TopicPreview,
 };

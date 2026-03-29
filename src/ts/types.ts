@@ -9,4 +9,8 @@ type AIModalProps = {
 
 type TabType = 'theory' | 'code' | 'overview';
 
-export type { AIModalProps, ClickProps, TabType };
+type TheoryQuestionsProps = {
+  topicId: string;
+};
+
+export type { AIModalProps, ClickProps, TabType, TheoryQuestionsProps };

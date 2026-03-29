@@ -115,8 +115,66 @@ interface TopicPreview {
   codeTasks: CodeTask[];
 }
 
+interface Option {
+  id: string;
+  label: string;
+  text: string;
+  order: number;
+}
+
+interface Question {
+  id: string;
+  prompt: string;
+  codeSnippet: string | null;
+  order: number;
+  options: Option[];
+  correctOptionIds: string[];
+}
+
+interface TheoryQuestions {
+  topic: TopicShort;
+  questions: Question[];
+}
+
 interface LocationState {
   topicId: string;
+}
+
+interface QuestionCardProps {
+  id: string;
+  prompt: string;
+  codeSnippet?: string;
+  options: Option[];
+  selectedAnswers: string[];
+  onSelect: (optionId: string) => void;
+  result: QuestionResult;
+  loading: boolean;
+  onCheck: () => void;
+}
+
+interface QuestionResult {
+  isCorrect: boolean;
+  correctOptionIds?: string[];
+}
+
+interface TheoryQuestionsResult {
+  questionId: string;
+  selectedOptionIds: string[];
+  correctOptionIds: string[];
+  isCorrect: boolean;
+}
+
+interface TheoryQuestionsResponse {
+  results: TheoryQuestionsResult[];
+  summary: {
+    submitted: number;
+    correct: number;
+  };
+  topicProgress: {
+    totalQuestions: number;
+    attempted: number;
+    correct: number;
+  };
 }
 
 export type {
@@ -131,9 +189,13 @@ export type {
   LocationState,
   LoginFormInputs,
   LoginFormProps,
+  QuestionCardProps,
+  QuestionResult,
   RefreshResponse,
   RegisterFormInputs,
   RegisterFormProps,
+  TheoryQuestions,
+  TheoryQuestionsResponse,
   Topic,
   TopicPreview,
 };

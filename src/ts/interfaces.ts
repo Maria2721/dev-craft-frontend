@@ -140,6 +140,15 @@ interface LocationState {
   topicId: string;
 }
 
+interface QuestionCardProps {
+  id: string;
+  prompt: string;
+  codeSnippet?: string;
+  options: Option[];
+  selectedAnswers: string[];
+  onSelect: (optionId: string) => void;
+}
+
 export type {
   AIChatRequest,
   AIChatResponse,
@@ -152,6 +161,7 @@ export type {
   LocationState,
   LoginFormInputs,
   LoginFormProps,
+  QuestionCardProps,
   RefreshResponse,
   RegisterFormInputs,
   RegisterFormProps,

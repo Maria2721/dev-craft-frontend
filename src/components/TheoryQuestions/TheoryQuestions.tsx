@@ -1,10 +1,10 @@
-import clsx from 'clsx';
 import { useState } from 'react';
 
 import type { TheoryQuestionsProps } from '@/ts/types';
 
 import { useTheoryQuestions } from '@/hooks/useTheoryQuestions';
 
+import { QuestionCard } from '../QuestionCard/QuestionCard';
 import { Loader } from '../ui';
 import styles from './TheoryQuestions.module.scss';
 
@@ -12,8 +12,6 @@ export const TheoryQuestions = ({ topicId }: TheoryQuestionsProps) => {
   const data = useTheoryQuestions(topicId);
 
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
-
-  if (!data) return <Loader size="lg" />;
 
   const handleSelect = (taskId: string, optionId: string) => {
     setAnswers((prev) => {
@@ -28,39 +26,20 @@ export const TheoryQuestions = ({ topicId }: TheoryQuestionsProps) => {
     });
   };
 
+  if (!data) return <Loader size="lg" />;
+
   return (
     <div className={styles.wrapper}>
-      {data.questions.map((task) => (
-        <div key={task.id} className={styles.card}>
-          <p className={styles.question}>{task.prompt}</p>
-
-          {task.codeSnippet && (
-            <pre className={styles.code}>
-              <code>{task.codeSnippet}</code>
-            </pre>
-          )}
-
-          <p className={styles.hint}>Select one or more options</p>
-
-          <ul className={styles.options}>
-            {task.options.map((option) => {
-              const isSelected = answers[task.id]?.includes(option.id);
-
-              return (
-                <li
-                  key={option.id}
-                  className={clsx(styles.option, {
-                    [styles.selected]: isSelected,
-                  })}
-                  onClick={() => handleSelect(task.id, option.id)}
-                >
-                  <span className={styles.label}>{option.label}</span>
-                  <span>{option.text}</span>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+      {data.questions.map((question) => (
+        <QuestionCard
+          key={question.id}
+          id={question.id}
+          prompt={question.prompt}
+          {...(question.codeSnippet && { codeSnippet: question.codeSnippet })}
+          options={question.options}
+          selectedAnswers={answers[question.id] || []}
+          onSelect={(optionId) => handleSelect(question.id, optionId)}
+        />
       ))}
     </div>
   );

@@ -119,6 +119,13 @@ interface LocationState {
   topicId: string;
 }
 
+interface TopicNodeData extends Record<string, unknown> {
+  label: string;
+  topicId: string;
+  title: string;
+  slug: string;
+}
+
 export type {
   AIChatRequest,
   AIChatResponse,
@@ -135,5 +142,6 @@ export type {
   RegisterFormInputs,
   RegisterFormProps,
   Topic,
+  TopicNodeData,
   TopicPreview,
 };

@@ -1,41 +1,38 @@
 import '@xyflow/react/dist/style.css';
 
-import { ReactFlow } from '@xyflow/react';
+import { type Node, ReactFlow } from '@xyflow/react';
+import { type MouseEvent } from 'react';
+import { generatePath, useNavigate } from 'react-router-dom';
 
-const Nodes = [
-  {
-    id: 'html',
-    position: { x: 240, y: 40 },
-    data: { label: 'HTML' },
-  },
-  {
-    id: 'css',
-    position: { x: 0, y: 180 },
-    data: { label: 'CSS' },
-  },
-  {
-    id: 'javascript',
-    position: { x: 120, y: 320 },
-    data: { label: 'JavaScript' },
-  },
-];
+import { useTopics } from '@/hooks/useTopics';
 
-const Edges = [
-  {
-    id: 'html-css',
-    source: 'html',
-    target: 'css',
-    style: { stroke: '#3772ff', strokeWidth: 2 },
-    animated: true,
-  },
-  { id: 'css-javascript', source: 'css', target: 'javascript' },
-];
+import { ROUTES } from '@/constants';
+
+import { createEdges, createNodes } from './mapFlow';
 
 export default function MapPage() {
+  const topics = useTopics();
+
+  const navigate = useNavigate();
+
+  const nodes = createNodes(topics);
+  const edges = createEdges(topics);
+
+  const handleNodeClick = (_event: MouseEvent, node: Node) => {
+    const topic = topics.find((item) => item.id === node.id);
+
+    if (!topic) {
+      return;
+    }
+
+    const path = generatePath(ROUTES.TOPIC, { slug: topic.slug });
+
+    void navigate(path, { state: { topicId: topic.id } });
+  };
+
   return (
     <section>
       <h1>Knowledge Map</h1>
-
       <div
         style={{
           width: '100%',
@@ -45,7 +42,7 @@ export default function MapPage() {
           border: '2px solid #000',
         }}
       >
-        <ReactFlow nodes={Nodes} edges={Edges}></ReactFlow>
+        <ReactFlow nodes={nodes} edges={edges} onNodeClick={handleNodeClick} />
       </div>
     </section>
   );

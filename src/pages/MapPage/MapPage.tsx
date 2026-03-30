@@ -1,26 +1,52 @@
-import { useNavigate } from 'react-router-dom';
+import '@xyflow/react/dist/style.css';
 
-import { useTopics } from '@/hooks/useTopics';
+import { ReactFlow } from '@xyflow/react';
+
+const Nodes = [
+  {
+    id: 'html',
+    position: { x: 240, y: 40 },
+    data: { label: 'HTML' },
+  },
+  {
+    id: 'css',
+    position: { x: 0, y: 180 },
+    data: { label: 'CSS' },
+  },
+  {
+    id: 'javascript',
+    position: { x: 120, y: 320 },
+    data: { label: 'JavaScript' },
+  },
+];
+
+const Edges = [
+  {
+    id: 'html-css',
+    source: 'html',
+    target: 'css',
+    style: { stroke: '#3772ff', strokeWidth: 2 },
+    animated: true,
+  },
+  { id: 'css-javascript', source: 'css', target: 'javascript' },
+];
 
 export default function MapPage() {
-  const topics = useTopics();
-  const navigate = useNavigate();
-
-  const openTopic = (topicId: string, slug: string) => {
-    void navigate(`/topics/${slug}`, { state: { topicId } });
-  };
-
   return (
-    <div>
-      <h1>Map Page</h1>
+    <section>
+      <h1>Knowledge Map</h1>
 
-      <ul>
-        {topics.map((topic) => (
-          <li key={topic.id}>
-            <button onClick={() => openTopic(topic.id, topic.slug)}>{topic.title}</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div
+        style={{
+          width: '100%',
+          height: '500px',
+          marginTop: '20px',
+          padding: '16px',
+          border: '2px solid #000',
+        }}
+      >
+        <ReactFlow nodes={Nodes} edges={Edges}></ReactFlow>
+      </div>
+    </section>
   );
 }

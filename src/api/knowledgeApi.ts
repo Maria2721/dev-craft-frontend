@@ -1,4 +1,5 @@
 import type {
+  CodeTasks,
   TheoryQuestions,
   TheoryQuestionsResponse,
   Topic,
@@ -39,5 +40,10 @@ export const postTheoryQuestions = async (
     },
   );
 
+  return response.data;
+};
+
+export const getCodeTasks = async (topicId: string): Promise<CodeTasks> => {
+  const response = await api.get<CodeTasks>(`/knowledge/topics/${topicId}/code-tasks`);
   return response.data;
 };

@@ -177,6 +177,25 @@ interface TheoryQuestionsResponse {
   };
 }
 
+interface CodeTask {
+  id: string;
+  title: string;
+  description: string;
+  taskType: 'AI_CHECK' | 'DRAG_DROP';
+  order: number;
+}
+
+interface CodeTasks {
+  topic: TopicShort;
+  codeTasks: CodeTask[];
+}
+
+interface CodeCardProps {
+  title: string;
+  description: string;
+  taskType: 'AI_CHECK' | 'DRAG_DROP';
+}
+
 export type {
   AIChatRequest,
   AIChatResponse,
@@ -185,6 +204,8 @@ export type {
   ApiError,
   AuthResponse,
   AuthState,
+  CodeCardProps,
+  CodeTasks,
   CustomAxiosRequestConfig,
   LocationState,
   LoginFormInputs,

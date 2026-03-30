@@ -1,6 +1,7 @@
 import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 
 import { Container } from '@/components/Container/Container';
+import { TheoryQuestions } from '@/components/TheoryQuestions/TheoryQuestions';
 import { Button, Loader } from '@/components/ui';
 
 import type { LocationState } from '@/ts/interfaces';
@@ -90,9 +91,7 @@ export default function TopicPage() {
         </div>
       )}
 
-      {activeTab === 'theory' && (
-        <div className={styles.placeholder}>Theory content loading...</div>
-      )}
+      {activeTab === 'theory' && <TheoryQuestions topicId={data.topic.id} />}
 
       {activeTab === 'code' && <div className={styles.placeholder}>Code tasks loading...</div>}
     </Container>

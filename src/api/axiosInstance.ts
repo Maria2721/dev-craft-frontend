@@ -23,13 +23,22 @@ api.interceptors.response.use(
   async (error: AxiosError) => {
     const originalRequest = error.config as CustomAxiosRequestConfig;
 
-    if (error.response?.status === 401 && originalRequest && !originalRequest._retry) {
+    if (
+      error.response?.status === 401 &&
+      originalRequest &&
+      !originalRequest._retry &&
+      originalRequest.url !== '/auth/refresh'
+    ) {
       originalRequest._retry = true;
 
       try {
         const refreshToken = getRefreshToken();
 
-        const response = await axios.post<RefreshResponse>('/auth/refresh', {
+        if (!refreshToken) {
+          return Promise.reject(error);
+        }
+
+        const response = await api.post<RefreshResponse>('/auth/refresh', {
           refreshToken,
         });
 
@@ -43,6 +52,9 @@ api.interceptors.response.use(
 
         return api(originalRequest);
       } catch (refreshError) {
+        saveTokens('', '');
+        window.location.href = '/login';
+
         return Promise.reject(
           refreshError instanceof Error ? refreshError : new Error(String(refreshError)),
         );

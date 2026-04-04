@@ -140,6 +140,12 @@ interface LocationState {
   topicId: string;
 }
 
+interface TopicNodeData extends Record<string, unknown> {
+  label: string;
+  topicId: string;
+  title: string;
+  slug: string;
+}
 interface QuestionCardProps {
   id: string;
   prompt: string;
@@ -197,5 +203,6 @@ export type {
   TheoryQuestions,
   TheoryQuestionsResponse,
   Topic,
+  TopicNodeData,
   TopicPreview,
 };

@@ -1,4 +1,4 @@
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 
 import { Container } from '@/components/Container/Container';
 import { TheoryQuestions } from '@/components/TheoryQuestions/TheoryQuestions';
@@ -8,13 +8,16 @@ import type { LocationState } from '@/ts/interfaces';
 import type { TabType } from '@/ts/types';
 
 import { useTopicPreview } from '@/hooks/useTopicPreview';
+import { useTopics } from '@/hooks/useTopics';
 
 import styles from './TopicPage.module.scss';
 
 export default function TopicPage() {
   const location = useLocation();
+  const { slug } = useParams<{ slug: string }>();
   const state = location.state as LocationState | undefined;
-  const topicId = state?.topicId;
+  const topics = useTopics();
+  const topicId = state?.topicId ?? topics.find((topic) => topic.slug === slug)?.id ?? '';
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -26,9 +29,9 @@ export default function TopicPage() {
     setSearchParams({ tab });
   };
 
-  const data = useTopicPreview(topicId || '');
+  const data = useTopicPreview(topicId);
 
-  if (!data) return <Loader size="lg" />;
+  if (!data || !topicId) return <Loader size="lg" />;
 
   return (
     <Container>

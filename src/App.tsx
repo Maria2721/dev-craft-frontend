@@ -8,6 +8,7 @@ import { AIAssistantProvider } from './components/AIAssistant/AIAssistantProvide
 import { Layout } from './components/Layout/Layout';
 import ProtectedRoute from './components/routes/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/routes/PublicRoute/PublicRoute';
+import TopicProtectedRoute from './components/routes/TopicProtectedRoute/TopicProtectedRoute';
 import { ROUTES } from './constants';
 import { useAppDispatch } from './hooks/useRedux';
 import InterviewPage from './pages/InterviewPage/InterviewPage';
@@ -69,9 +70,9 @@ export default function App() {
           <Route
             path={ROUTES.TOPIC}
             element={
-              <ProtectedRoute>
+              <TopicProtectedRoute>
                 <TopicPage />
-              </ProtectedRoute>
+              </TopicProtectedRoute>
             }
           />
 

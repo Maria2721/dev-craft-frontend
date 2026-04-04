@@ -15,6 +15,7 @@ import InterviewPage from './pages/InterviewPage/InterviewPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import MapPage from './pages/MapPage/MapPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import OAuthCallbackPage from './pages/OAuthCallbackPage/OAuthCallbackPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ProgressPage from './pages/ProgressPage/ProgressPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
@@ -95,6 +96,8 @@ export default function App() {
               </PublicRoute>
             }
           />
+
+          <Route path={ROUTES.AUTH_CALLBACK} element={<OAuthCallbackPage />} />
         </Route>
       </Routes>
 

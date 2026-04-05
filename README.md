@@ -31,6 +31,11 @@ The project is an application for preparing for frontend development interviews.
 
 - https://dev-craft-frontend.netlify.app/
 
+## Tests
+
+- **Unit (Vitest):** `npm run test:run` — runs once in the terminal. Use `npm test` for watch mode, `npm run test:ui` for the Vitest UI.
+- **E2E (Playwright):** `npm run test:e2e` — browser tests in `tests/e2e/`. The API must be running (see `VITE_API_URL` in `.env`, typically `http://localhost:6969`). Playwright starts the Vite dev server on `http://localhost:5173` unless it is already up. Optional: `npm run test:e2e:ui` or `npm run test:e2e:headed`. After a run, `npx playwright show-report` opens the HTML report.
+
 ## Technology Stack
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" title="React" alt="React" width="40" height="40"/>&nbsp;

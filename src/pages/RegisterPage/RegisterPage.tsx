@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
+import OAuthSocialButtons from '@/components/auth/OAuthSocialButtons/OAuthSocialButtons';
 import RegisterForm from '@/components/forms/RegisterForm/RegisterForm';
 
 import type { RegisterFormInputs } from '@/ts/interfaces';
@@ -17,5 +18,10 @@ export default function RegisterPage() {
     void navigate(ROUTES.HOME);
   };
 
-  return <RegisterForm onSubmit={handleRegister} />;
+  return (
+    <>
+      <RegisterForm onSubmit={handleRegister} />
+      <OAuthSocialButtons />
+    </>
+  );
 }

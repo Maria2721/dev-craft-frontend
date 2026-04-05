@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
+import OAuthSocialButtons from '@/components/auth/OAuthSocialButtons/OAuthSocialButtons';
 import LoginForm from '@/components/forms/LoginForm/LoginForm';
 
 import type { LoginFormInputs } from '@/ts/interfaces';
@@ -17,5 +18,10 @@ export default function LoginPage() {
     void navigate(ROUTES.HOME);
   };
 
-  return <LoginForm onSubmit={handleLogin} />;
+  return (
+    <>
+      <LoginForm onSubmit={handleLogin} />
+      <OAuthSocialButtons />
+    </>
+  );
 }

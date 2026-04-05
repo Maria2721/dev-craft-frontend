@@ -8,12 +8,14 @@ import { AIAssistantProvider } from './components/AIAssistant/AIAssistantProvide
 import { Layout } from './components/Layout/Layout';
 import ProtectedRoute from './components/routes/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/routes/PublicRoute/PublicRoute';
+import TopicProtectedRoute from './components/routes/TopicProtectedRoute/TopicProtectedRoute';
 import { ROUTES } from './constants';
 import { useAppDispatch } from './hooks/useRedux';
 import InterviewPage from './pages/InterviewPage/InterviewPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import MapPage from './pages/MapPage/MapPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import OAuthCallbackPage from './pages/OAuthCallbackPage/OAuthCallbackPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ProgressPage from './pages/ProgressPage/ProgressPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
@@ -69,9 +71,9 @@ export default function App() {
           <Route
             path={ROUTES.TOPIC}
             element={
-              <ProtectedRoute>
+              <TopicProtectedRoute>
                 <TopicPage />
-              </ProtectedRoute>
+              </TopicProtectedRoute>
             }
           />
 
@@ -94,6 +96,8 @@ export default function App() {
               </PublicRoute>
             }
           />
+
+          <Route path={ROUTES.AUTH_CALLBACK} element={<OAuthCallbackPage />} />
         </Route>
       </Routes>
 

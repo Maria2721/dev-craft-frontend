@@ -3,6 +3,7 @@ const ROUTES = {
   MAP: '/map',
   REGISTER: '/register',
   LOGIN: '/login',
+  AUTH_CALLBACK: '/auth/callback',
   PROGRESS: '/progress',
   INTERVIEW: '/interview',
   PROFILE: '/profile',

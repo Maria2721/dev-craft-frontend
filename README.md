@@ -75,6 +75,16 @@ Kanban for tasks and progress: [GitHub Project](https://github.com/users/Maria27
 
 - [Week 5 checkpoint demo](https://youtu.be/oC2j7znBVyA)
 
+## Notable pull requests (code review)
+
+Reviews that dug into behaviour, bundle size, tests, and UX—not just style nits.
+
+| PR | Summary of the review |
+|----|------------------------|
+| [#51 — Login functionality](https://github.com/Maria2721/dev-craft-frontend/pull/51) | Aligned **tests** with the real login-API flow; flagged **over-strict password rules** on login vs registration; **`autocomplete`** and scope creep in unrelated styles. |
+| [#57 — AI Assistant](https://github.com/Maria2721/dev-craft-frontend/pull/57) | **Bundle size** impact of the markdown stack; whether the floating assistant button matches **“authenticated-only”** copy; streaming/error UX. |
+| [#70 — Create knowledge map](https://github.com/Maria2721/dev-craft-frontend/pull/70) | **Global vs scoped** `h1` styles on the map; **duplicate topic requests** from nested hooks; **code-splitting** for React Flow and large chunks. |
+
 ## Technology Stack
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" title="React" alt="React" width="40" height="40"/>&nbsp;

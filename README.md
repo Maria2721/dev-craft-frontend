@@ -10,6 +10,16 @@
 
 **Why it exists:** to give learners one place to rehearse common interview themes, drill theory and code, and build confidence before real interviews.
 
+## What we're proud of
+
+We built a **structured knowledge layer** end to end: interview topics, theory questions, and code tasks live in the database and are served through a clear **REST API**, so the UI and automation always share the same source of truth. Learners can submit **question attempts** and use **AI-assisted checks** on code tasks—so model feedback stays tied to a concrete exercise, not only to open chat.
+
+**Dify** is where we keep the heavy **AI** lifting—chat flows, prompts, and **retrieval over our knowledge base**—while the backend focuses on auth, content, throttling, and passing **task context** (topic, prompt, code snippet) into the model. The same ideas extend to a **Discord bot** that talks to **Dify**, with **speech-to-text** for voice messages and **chunked replies** for long answers, so the assistant is useful outside the browser too.
+
+On the backend we expose an **MCP** server (Model Context Protocol): tools like **topic summary** read the same knowledge data as the app, which fits **AI-assisted workflows** in the IDE. We also publish **OpenAPI** and apply **rate limits** on AI-heavy routes so the surface stays clear and predictable as usage grows.
+
+On the **frontend**, we invested in an **interactive roadmap** (topic graph), focused **topic** pages, **social login** alongside classic auth, and an **in-app AI assistant** that is grounded in what the user is studying—not a generic chat widget.
+
 ## Team
 
 <table>

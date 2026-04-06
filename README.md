@@ -29,18 +29,24 @@ On the **frontend**, we invested in an **interactive roadmap** (topic graph), fo
         <img src="https://github.com/Maria2721.png" width="60" height="60" alt="Maria" /><br/>
         Maria
       </a>
+      <br/>
+      <a href="https://github.com/Maria2721/dev-craft-frontend/tree/main/development-notes/Maria2721">Development diary</a>
     </td>
     <td align="center">
       <a href="https://github.com/Andrey-Yurchuk">
         <img src="https://github.com/Andrey-Yurchuk.png" width="60" height="60" alt="Andrey" /><br/>
         Andrey
       </a>
+      <br/>
+      <a href="https://github.com/Maria2721/dev-craft-frontend/tree/main/development-notes/Andrey-Yurchuk">Development diary</a>
     </td>
     <td align="center">
       <a href="https://github.com/Khabib1802">
         <img src="https://github.com/Khabib1802.png" width="60" height="60" alt="Khabib" /><br/>
         Khabib
       </a>
+      <br/>
+      <a href="https://github.com/Maria2721/dev-craft-frontend/tree/main/development-notes/Khabib1802">Development diary</a>
     </td>
   </tr>
 </table>

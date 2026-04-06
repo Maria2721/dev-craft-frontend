@@ -1,6 +1,14 @@
 # DevCraft
 
-The project is an application for preparing for frontend development interviews.
+## About
+
+**DevCraft** is a web application for **preparing for JavaScript and TypeScript technical interviews**, with a focus on **frontend** roles. It is built as a capstone team project: the UI talks to a **REST API** provided by a separate [backend service](https://github.com/Maria2721/dev-craft-backend) for authentication, structured learning content, and other server-driven features.
+
+**Who it is for:** students and developers who want a **guided path**—from topic overview and interview-style questions to practical tasks—instead of a scattered set of links and notes.
+
+**What you can do (product goal):** sign up and sign in, explore a **structured curriculum** (topics, theory, questions, and coding-style assignments), and use tooling that supports learning and practice. The team separates **data served from the API/database** from scenarios where an **AI** layer is appropriate (for example hints or chat-style help), so the experience stays predictable where content is curated and flexible where the model adds value.
+
+**Why it exists:** to give learners one place to rehearse common interview themes, drill theory and code, and build confidence before real interviews.
 
 ## Team
 

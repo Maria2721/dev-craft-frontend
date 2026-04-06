@@ -1,6 +1,6 @@
 # Self-Assessment - Maria Ivanova
 
-[Ссылка на PR]()
+[Ссылка на PR](https://github.com/Maria2721/dev-craft-frontend/pull/78)
 
 ---
 

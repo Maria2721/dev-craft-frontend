@@ -45,6 +45,10 @@
 
 - https://dev-craft-frontend.netlify.app/
 
+## Demo video
+
+- [DevCraft — demo | Interview prep (JavaScript & TypeScript)](https://youtu.be/yUDCdSWLbUo) (~7 min): main user path, client and backend stack.
+
 ## Week 5 proof video
 
 - [Week 5 checkpoint demo](https://youtu.be/oC2j7znBVyA)

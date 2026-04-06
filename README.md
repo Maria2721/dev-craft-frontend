@@ -51,6 +51,12 @@ On the **frontend**, we invested in an **interactive roadmap** (topic graph), fo
   </tr>
 </table>
 
+## Board
+
+Kanban for tasks and progress: [GitHub Project](https://github.com/users/Maria2721/projects/2)
+
+![GitHub Project board](doc/screen_board_github.png)
+
 ## Meeting notes
 
 - [2026-02-20 — Project kickoff](meeting-notes/2026-02-20-sync-project-kickoff.md)

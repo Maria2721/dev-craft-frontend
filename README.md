@@ -63,6 +63,59 @@ Kanban for tasks and progress: [GitHub Project](https://github.com/users/Maria27
 - [2026-02-23 — Roadmap and UI](meeting-notes/2026-02-23-sync-roadmap-and-ui.md)
 - [2026-03-17 — AI and knowledge base](meeting-notes/2026-03-17-sync-ai-and-knowledge.md)
 
+## Local development
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Maria2721/dev-craft-frontend.git
+   cd dev-craft-frontend
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Environment variables**
+
+   - Copy the example env file and edit values for your machine:
+
+     ```bash
+     cp .env.example .env
+     ```
+
+   - Set **`VITE_API_URL`** in `.env` to the backend **base URL** (no trailing slash), e.g. `http://localhost:6969` if the API listens there. See the [backend README](https://github.com/Maria2721/dev-craft-backend/blob/main/README.md) for how to run the API and which port it uses.
+   - The browser will call the API from the Vite origin; ensure the backend **CORS** settings allow the frontend origin (typically `http://localhost:5173` in development).
+
+4. **Run the dev server**
+
+   ```bash
+   npm start
+   ```
+
+   Or: `npm run dev` (same command). Then open [http://localhost:5173](http://localhost:5173) (default Vite port).
+
+5. **Production build (optional)**
+
+   ```bash
+   npm run build
+   npm run preview
+   ```
+
+   `preview` serves the built files locally for a quick sanity check before deploy.
+
+## Lint and tests
+
+- **Lint (ESLint):** `npm run lint` — runs ESLint on the project.
+
+- **Unit (Vitest):** `npm run test:run` — runs once in the terminal. Use `npm test` for watch mode, `npm run test:ui` for the Vitest UI.
+
+- **E2E (Playwright):** `npm run test:e2e` — browser tests in `tests/e2e/`. The API must be running (see `VITE_API_URL` in `.env`, typically `http://localhost:6969`). Playwright starts the Vite dev server on `http://localhost:5173` unless it is already up. Optional: `npm run test:e2e:ui` or `npm run test:e2e:headed`. After a run, `npx playwright show-report` opens the HTML report.
+
+Vitest and Playwright scripts are defined on the branch that includes the full test stack (for example **`dev`**). If a command is not found on your checkout, switch to that branch or merge it into your working tree so `package.json` lists the matching scripts.
+
 ## Deploy
 
 - https://dev-craft-frontend.netlify.app/

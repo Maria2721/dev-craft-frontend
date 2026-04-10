@@ -9,8 +9,8 @@
 
 | Категория | Фича (по рубрике) | Доказательства | Баллы |
 |-----------|-------------------|----------------|------:|
-| My Components | **Сложный бэкенд-сервис** - Discord-бот (`discord.js`, чат/STT в Dify, при необходимости `InternalApiChatBackend` - внутренний API, история в PostgreSQL, чанкинг ответов, ffmpeg для аудио) | [`src/discord-bot/`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/discord-bot), PR [#42](https://github.com/Maria2721/dev-craft-backend/pull/42) | 30 |
-| My Components | **Сложный бэкенд-сервис** - MCP по HTTP (`McpController`, SDK MCP, tool «сводка по теме» - use cases знаний) | [`src/presentation/api/mcp/`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/presentation/api/mcp), [`src/infrastructure/mcp/`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/infrastructure/mcp), PR [#35](https://github.com/Maria2721/dev-craft-backend/pull/35) | 30 |
+| My Components | **Сложный бэкенд-сервис** - Discord-бот (`discord.js`, чат и STT в Dify, история в PostgreSQL, чанкинг ответов, **ffmpeg** для голоса) | [`src/discord-bot/`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/discord-bot), PR [#42](https://github.com/Maria2721/dev-craft-backend/pull/42) и PR [#58](https://github.com/Maria2721/dev-craft-backend/pull/58) | 30 |
+| My Components | **Сложный бэкенд-сервис** - MCP (`McpController`, SDK MCP): tools **`get_topic_code_tasks`**, **`submit_code_task_ai_check`**, **`get_platform_stats`** | [`src/presentation/api/mcp/`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/presentation/api/mcp), [`src/infrastructure/mcp/`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/infrastructure/mcp), PR [#35](https://github.com/Maria2721/dev-craft-backend/pull/35) и PR [#58](https://github.com/Maria2721/dev-craft-backend/pull/58) | 30 |
 | My Components | **Сложный бэкенд-сервис** - домен знаний + **AI-проверка code-task** (use case, разбор ответа LLM) | [`src/application/knowledge/`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/application/knowledge), `submit-code-task-ai-check.use-case.ts` | 30 |
 | Backend & Data | Custom Auth (JWT + bcrypt + guards) | модуль auth, Passport | 20 |
 | Backend & Data | Custom backend + локальная БД (NestJS + Prisma + PostgreSQL) | Схема и миграции: [`prisma/schema.prisma`](https://github.com/Maria2721/dev-craft-backend/tree/main/prisma), доступ к данным через Prisma Client в репозиториях; PostgreSQL в [`docker-compose.yml`](https://github.com/Maria2721/dev-craft-backend/blob/main/docker-compose.yml) | 30 |
@@ -31,9 +31,9 @@
 
 ## 2. Описание моей работы
 
-Основной вклад - **бэкенд на NestJS**: авторизация, API **базы знаний** (темы, вопросы, задачи, попытки), интеграция с **Dify** (чат, проверка кода, сценарии с контекстом), отдельный процесс **Discord-бота** (текст и голос через STT, длинные ответы с **чанкингом**), **MCP** для сводок по темам и связки с **Dify Tools**. В стеке: **TypeScript**, **Prisma**, **PostgreSQL**, **Docker**, **GitHub Actions**, **OpenAPI**.
+Основной вклад - **бэкенд на NestJS**: авторизация, API **базы знаний** (темы, вопросы, задачи, попытки), интеграция с **Dify** (чат, проверка кода, сценарии с контекстом), отдельный процесс **Discord-бота** (текст и голос через STT, длинные ответы с **чанкингом**), **MCP** для **Dify Tools**: список code-task по теме, **сабмит AI-проверки**, **статистика практики** по пользователю Discord. В стеке: **TypeScript**, **Prisma**, **PostgreSQL**, **Docker**, **GitHub Actions**, **OpenAPI**.
 
-Сложнее всего было согласовать **Discord**, **Dify** и внутренние API (токены, conversation id, ошибки), отладить цепочку **аудио - STT - чат**, и стабилизировать **MCP** за прокси/авторизацией. Итерации по **промптам и настройкам Dify** задокументированы в дневнике (лимиты Discord, длина ответов модели).
+Сложнее всего было согласовать **Discord**, **Dify** и внутренние API (токены, conversation id, ошибки), отладить цепочку **аудио - STT - чат**, стабилизировать **MCP** за прокси/авторизацией и выстроить **чатфлоу** (классификатор, переменные сессии, MCP-узлы без утечки JSON в ответ). Итерации по **промптам и настройкам Dify** задокументированы в дневнике (лимиты Discord, длина ответов модели).
 
 ---
 
@@ -43,11 +43,19 @@
 
 ### 3.1. Пайплайн Discord-ассистента
 
-Отдельный runtime в [`src/discord-bot/`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/discord-bot): сообщения в канале, опционально **голосовые вложения** (скачивание - **ffmpeg** - **Dify STT** - текст запроса), маршрутизация ответа через **Dify** или **внутренний** бэкенд чата с сохранением истории в **PostgreSQL**.
+Бот — **отдельный процесс** с кодом в [`src/discord-bot/`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/discord-bot); входящие сообщения приходят из Discord-канала.
+
+В обычном сценарии человек пишет в канал **текстом**, бот отправляет этот текст в **основной бэкенд** (Nest). Бэкенд смотрит: **какой это канал** и **какой пользователь Discord** — по этой паре в **PostgreSQL** всегда одна и та же **беседа** (если её ещё не было, строка создаётся при первом сообщении). У беседы в базе есть **свой id**; и вопрос пользователя, и ответ ассистента сохраняются **отдельными записями** в таблице сообщений и **привязаны к id этой беседы**. Перед тем как снова позвать модель, бэкенд **подтягивает из PostgreSQL последние сообщения этой беседы** и отдаёт их в цепочку с LLM — поэтому следующий ответ продолжает диалог, а не начинает «с чистого листа», даже после перезапуска бота или сервера.
 
 ### 3.2. MCP-сервер и база знаний для Dify Tools
 
-[`McpController`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/presentation/api/mcp/mcp.controller.ts) отдаёт **Streamable HTTP** MCP, регистрирует tool со **сводкой по теме** через те же **get topics / preview**, что и REST API - одна модель знаний для людей и для tooling. Связка с критериями **Tool Use** и **RAG**: в Dify tool может вызывать MCP в workflow.
+**MCP-сервер** собран на официальном **SDK** Model Context Protocol — пакет **`@modelcontextprotocol/sdk`**: соединение с клиентом идёт через транспорт **Streamable HTTP** (`StreamableHTTPServerTransport`), набор tools и схемы аргументов задаёт **`createDevCraftMcpServer`** (валидация **Zod**). В Nest это подключает [`McpController`](https://github.com/Maria2721/dev-craft-backend/tree/main/src/presentation/api/mcp/mcp.controller.ts), чтобы **Dify** мог вызывать инструменты из чатфлоу.
+
+Зарегистрированы **три инструмента**:
+
+1. **`get_topic_code_tasks`** — по выбранной **теме** возвращает **задачи с кодом** (можно получить краткий каталог или полный список), чтобы пользователь в Discord видел, что можно решать.
+2. **`submit_code_task_ai_check`** — принимает **решение по задаче** и запускает **ту же AI-проверку**, что и веб: ответ модели разбирается на бэкенде, результат попадает в **базу** как **попытка**, как при отправке с сайта.
+3. **`get_platform_stats`** — отдаёт **сводную статистику** по уже пройденным **AI-проверкам** для человека из Discord: бэкенд понимает пользователя по **идентификатору Discord** и считает агрегаты по его попыткам.
 
 ---
 

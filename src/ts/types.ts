@@ -1,0 +1,21 @@
+type ClickProps = {
+  onClick: () => void;
+};
+
+type AIModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+type TabType = 'theory' | 'code' | 'overview';
+
+type TopicIdProps = {
+  topicId: string;
+};
+
+type CodeItem = {
+  id: string;
+  content: string;
+};
+
+export type { AIModalProps, ClickProps, CodeItem, TabType, TopicIdProps };

@@ -1,0 +1,27 @@
+@use '@/styles/variables' as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+
+  img {
+    display: block;
+    width: 32px;
+    height: auto;
+  }
+
+  span {
+    font-size: 24px;
+  }
+
+  &.icon {
+    span {
+      display: none;
+    }
+  }
+}

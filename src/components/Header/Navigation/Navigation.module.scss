@@ -1,0 +1,62 @@
+@use '@/styles/variables' as *;
+
+.nav {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.list {
+  align-self: stretch;
+  display: flex;
+  gap: 32px;
+  height: 100%;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-weight: 700;
+  transition: color $transition-normal;
+
+  &:hover {
+    color: var(--color-primary-blue);
+  }
+
+  &.active {
+    color: var(--color-text);
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  .nav {
+    position: fixed;
+    inset: 85px 0 0 0;
+    flex-direction: column;
+    width: 100%;
+    background: var(--color-bg);
+    padding: 40px 24px;
+    transform: translateX(100%);
+    transition: transform $transition-normal;
+    z-index: 10;
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+
+  .list {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.buttons :last-child {
+  margin-left: 10px;
+}

@@ -9,8 +9,13 @@ type AIModalProps = {
 
 type TabType = 'theory' | 'code' | 'overview';
 
-type TheoryQuestionsProps = {
+type TopicIdProps = {
   topicId: string;
 };
 
-export type { AIModalProps, ClickProps, TabType, TheoryQuestionsProps };
+type CodeItem = {
+  id: string;
+  content: string;
+};
+
+export type { AIModalProps, ClickProps, CodeItem, TabType, TopicIdProps };

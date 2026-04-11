@@ -1,0 +1,114 @@
+@use '@/styles/variables' as *;
+
+.card {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--color-bg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+
+  & :global(p),
+  & :global(table),
+  & :global(code),
+  & :global(pre),
+  & :global(span),
+  & :global(li) {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  & :global(ul),
+  & :global(ol) {
+    padding-left: 1.25rem;
+    margin-left: 0;
+  }
+
+  & :global(pre) {
+    overflow-x: auto;
+  }
+
+  & :global(table) {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.editorBlock {
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-text);
+  font-size: 14px;
+
+  transition: 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-primary-blue);
+  }
+
+  &:focus-within {
+    border-color: var(--color-primary-blue);
+  }
+}
+
+.DragDropContent {
+  background: var(--color-surface);
+  color: var(--color-text);
+  margin-bottom: 10px;
+  overflow-x: auto;
+}
+
+.editorContent {
+  background: var(--color-surface);
+  margin-bottom: 10px;
+}
+
+.editorFooter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.result {
+  font-weight: 600;
+}
+
+.success {
+  color: var(--color-primary-green);
+}
+
+.error {
+  color: var(--color-primary-pink);
+}
+
+.correct {
+  border-color: var(--color-primary-green);
+}
+
+.wrong {
+  border-color: var(--color-primary-pink);
+}

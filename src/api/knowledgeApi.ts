@@ -1,4 +1,6 @@
 import type {
+  CodeTasks,
+  CodeTasksResponse,
   TheoryQuestions,
   TheoryQuestionsResponse,
   Topic,
@@ -36,6 +38,41 @@ export const postTheoryQuestions = async (
           selectedOptionIds: selectedOptionIds,
         },
       ],
+    },
+  );
+
+  return response.data;
+};
+
+export const getCodeTasks = async (topicId: string): Promise<CodeTasks> => {
+  const response = await api.get<CodeTasks>(`/knowledge/topics/${topicId}/code-tasks`);
+  return response.data;
+};
+
+export const postCodeTasksAI = async (
+  topicId: string,
+  codeTaskId: string,
+  code: string,
+): Promise<CodeTasksResponse> => {
+  const response = await api.post<CodeTasksResponse>(
+    `/knowledge/topics/${topicId}/code-tasks/${codeTaskId}/ai-check`,
+    {
+      code: code,
+    },
+  );
+
+  return response.data;
+};
+
+export const postCodeTasksDragDrop = async (
+  topicId: string,
+  codeTaskId: string,
+  code: string,
+): Promise<CodeTasksResponse> => {
+  const response = await api.post<CodeTasksResponse>(
+    `/knowledge/topics/${topicId}/code-tasks/${codeTaskId}/drag-drop`,
+    {
+      code: code,
     },
   );
 

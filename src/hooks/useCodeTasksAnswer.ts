@@ -3,30 +3,37 @@ import { useState } from 'react';
 
 import { toastError, toastLoading, toastSuccess } from '@/utils/toast';
 
-import type { ApiError, QuestionResult } from '@/ts/interfaces';
+import type { ApiError, CodeTasksResult } from '@/ts/interfaces';
 
-import { postTheoryQuestions } from '@/api/knowledgeApi';
+import { postCodeTasksAI, postCodeTasksDragDrop } from '@/api/knowledgeApi';
 
-export const useTheoryQuestionsAnswer = () => {
-  const [results, setResults] = useState<Record<string, QuestionResult>>({});
+export const useCodeTasksAIAnswer = () => {
+  const [results, setResults] = useState<Record<string, CodeTasksResult>>({});
   const [loadingIds, setLoadingIds] = useState<Record<string, boolean>>({});
 
-  const sendAnswer = async (topicId: string, questionId: string, selectedOptionIds: string[]) => {
+  const sendAnswer = async (
+    topicId: string,
+    codeTaskId: string,
+    code: string,
+    referenceSolution: string,
+  ) => {
     const toastId = toastLoading('Sending response...');
 
     setLoadingIds((prev) => ({
       ...prev,
-      [questionId]: true,
+      [codeTaskId]: true,
     }));
 
     try {
-      const response = await postTheoryQuestions(topicId, questionId, selectedOptionIds);
+      let response;
 
-      const question = response.results.find((el) => el.questionId === questionId);
+      if (referenceSolution) {
+        response = await postCodeTasksDragDrop(topicId, codeTaskId, code);
+      } else {
+        response = await postCodeTasksAI(topicId, codeTaskId, code);
+      }
 
-      if (!question) return;
-
-      if (question.isCorrect) {
+      if (response.valid) {
         toastSuccess(toastId, 'Your answer is correct');
       } else {
         toastError(toastId, 'Your answer is incorrect');
@@ -34,9 +41,9 @@ export const useTheoryQuestionsAnswer = () => {
 
       setResults((prev) => ({
         ...prev,
-        [questionId]: {
-          isCorrect: question.isCorrect,
-          correctOptionIds: question.correctOptionIds,
+        [codeTaskId]: {
+          isCorrect: response.valid,
+          hints: response.hints,
         },
       }));
     } catch (error) {
@@ -48,7 +55,7 @@ export const useTheoryQuestionsAnswer = () => {
     } finally {
       setLoadingIds((prev) => ({
         ...prev,
-        [questionId]: false,
+        [codeTaskId]: false,
       }));
     }
   };

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { TheoryQuestionsProps } from '@/ts/types';
+import type { TopicIdProps } from '@/ts/types';
 
 import { useTheoryQuestions } from '@/hooks/useTheoryQuestions';
 import { useTheoryQuestionsAnswer } from '@/hooks/useTheoryQuestionsAnswer';
@@ -9,7 +9,7 @@ import { QuestionCard } from '../QuestionCard/QuestionCard';
 import { Loader } from '../ui';
 import styles from './TheoryQuestions.module.scss';
 
-export const TheoryQuestions = ({ topicId }: TheoryQuestionsProps) => {
+export const TheoryQuestions = ({ topicId }: TopicIdProps) => {
   const data = useTheoryQuestions(topicId);
   const { results, setResults, loadingIds, sendAnswer } = useTheoryQuestionsAnswer();
 

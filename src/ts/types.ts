@@ -13,4 +13,9 @@ type TopicIdProps = {
   topicId: string;
 };
 
-export type { AIModalProps, ClickProps, TabType, TopicIdProps };
+type CodeItem = {
+  id: string;
+  content: string;
+};
+
+export type { AIModalProps, ClickProps, CodeItem, TabType, TopicIdProps };

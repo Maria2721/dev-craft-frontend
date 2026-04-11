@@ -51,6 +51,12 @@
   }
 }
 
+.hint {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
 .editorBlock {
   padding: 16px;
   border-radius: 10px;
@@ -67,6 +73,13 @@
   &:focus-within {
     border-color: var(--color-primary-blue);
   }
+}
+
+.DragDropContent {
+  background: var(--color-surface);
+  color: var(--color-text);
+  margin-bottom: 10px;
+  overflow-x: auto;
 }
 
 .editorContent {
@@ -90,4 +103,12 @@
 
 .error {
   color: var(--color-primary-pink);
+}
+
+.correct {
+  border-color: var(--color-primary-green);
+}
+
+.wrong {
+  border-color: var(--color-primary-pink);
 }

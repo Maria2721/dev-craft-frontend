@@ -183,17 +183,13 @@ interface TheoryQuestionsResponse {
   };
 }
 
-interface CodeTask {
-  id: string;
-  title: string;
-  description: string;
-  taskType: 'AI_CHECK' | 'DRAG_DROP';
-  order: number;
+interface CodeTaskSeparate extends CodeTask {
+  referenceSolution: string;
 }
 
 interface CodeTasks {
   topic: TopicShort;
-  codeTasks: CodeTask[];
+  codeTasks: CodeTaskSeparate[];
 }
 
 interface CodeCardProps {
@@ -201,14 +197,15 @@ interface CodeCardProps {
   title: string;
   description: string;
   taskType: 'AI_CHECK' | 'DRAG_DROP';
+  referenceSolution: string;
   code: string;
-  result: CodeTasksAIResult;
+  result: CodeTasksResult;
   loading: boolean;
   onChange: (code: string) => void;
   onSubmit: () => void;
 }
 
-interface CodeTasksAIResponse {
+interface CodeTasksResponse {
   codeTaskId: string;
   attemptId: string;
   valid: boolean;
@@ -217,9 +214,14 @@ interface CodeTasksAIResponse {
   improvements: string;
 }
 
-interface CodeTasksAIResult {
+interface CodeTasksResult {
   isCorrect: boolean;
   hints?: string;
+}
+
+interface DragDropProps {
+  referenceSolution: string;
+  onChange: (code: string) => void;
 }
 
 export type {
@@ -232,9 +234,10 @@ export type {
   AuthState,
   CodeCardProps,
   CodeTasks,
-  CodeTasksAIResponse,
-  CodeTasksAIResult,
+  CodeTasksResponse,
+  CodeTasksResult,
   CustomAxiosRequestConfig,
+  DragDropProps,
   LocationState,
   LoginFormInputs,
   LoginFormProps,

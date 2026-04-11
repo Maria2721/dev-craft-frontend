@@ -1,6 +1,6 @@
 import type {
   CodeTasks,
-  CodeTasksAIResponse,
+  CodeTasksResponse,
   TheoryQuestions,
   TheoryQuestionsResponse,
   Topic,
@@ -53,9 +53,24 @@ export const postCodeTasksAI = async (
   topicId: string,
   codeTaskId: string,
   code: string,
-): Promise<CodeTasksAIResponse> => {
-  const response = await api.post<CodeTasksAIResponse>(
+): Promise<CodeTasksResponse> => {
+  const response = await api.post<CodeTasksResponse>(
     `/knowledge/topics/${topicId}/code-tasks/${codeTaskId}/ai-check`,
+    {
+      code: code,
+    },
+  );
+
+  return response.data;
+};
+
+export const postCodeTasksDragDrop = async (
+  topicId: string,
+  codeTaskId: string,
+  code: string,
+): Promise<CodeTasksResponse> => {
+  const response = await api.post<CodeTasksResponse>(
+    `/knowledge/topics/${topicId}/code-tasks/${codeTaskId}/drag-drop`,
     {
       code: code,
     },

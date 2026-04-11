@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { TopicIdProps } from '@/ts/types';
 
 import { useCodeTasks } from '@/hooks/useCodeTasks';
-import { useCodeTasksAIAnswer } from '@/hooks/useCodeTasksAIAnswer';
+import { useCodeTasksAIAnswer } from '@/hooks/useCodeTasksAnswer';
 
 import { CodeCard } from '../CodeCard/CodeCard';
 import { Loader } from '../ui';
@@ -45,11 +45,14 @@ export const CodeTasks = ({ topicId }: TopicIdProps) => {
           title={task.title}
           description={task.description}
           taskType={task.taskType}
+          referenceSolution={task.referenceSolution}
           code={codes[task.id] || ''}
           result={results[task.id]}
           loading={loadingIds[task.id]}
           onChange={(code: string) => handleCodeChange(task.id, code)}
-          onSubmit={() => void sendAnswer(topicId, task.id, codes[task.id] || '')}
+          onSubmit={() =>
+            void sendAnswer(topicId, task.id, codes[task.id] || '', task.referenceSolution)
+          }
         />
       ))}
     </div>

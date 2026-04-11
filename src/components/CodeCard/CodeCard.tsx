@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 
 import type { CodeCardProps } from '@/ts/interfaces';
 
+import { DragDropCode } from '../DragDropCode/DragDropCode';
 import { Button } from '../ui';
 import styles from './CodeCard.module.scss';
 
@@ -12,6 +13,7 @@ export const CodeCard = ({
   title,
   description,
   taskType,
+  referenceSolution,
   code,
   result,
   loading,
@@ -25,7 +27,18 @@ export const CodeCard = ({
         <Markdown remarkPlugins={[remarkGfm]}>{description}</Markdown>
       </div>
 
-      <div className={styles.editorBlock}>
+      <p className={styles.hint}>
+        {taskType === 'AI_CHECK'
+          ? 'Write your version of the code in the editor'
+          : 'Drag the blocks and arrange them in the correct order'}
+      </p>
+
+      <div
+        className={clsx(styles.editorBlock, {
+          [styles.correct]: result && result?.isCorrect,
+          [styles.wrong]: result && !result?.isCorrect,
+        })}
+      >
         <div className={styles.editorContent}>
           {taskType === 'AI_CHECK' ? (
             <Editor
@@ -41,7 +54,9 @@ export const CodeCard = ({
               }}
             />
           ) : (
-            'Drag & Drop'
+            referenceSolution && (
+              <DragDropCode referenceSolution={referenceSolution} onChange={onChange} />
+            )
           )}
         </div>
 

@@ -3,15 +3,20 @@ import { useState } from 'react';
 
 import { toastError, toastLoading, toastSuccess } from '@/utils/toast';
 
-import type { ApiError, CodeTasksAIResult } from '@/ts/interfaces';
+import type { ApiError, CodeTasksResult } from '@/ts/interfaces';
 
-import { postCodeTasksAI } from '@/api/knowledgeApi';
+import { postCodeTasksAI, postCodeTasksDragDrop } from '@/api/knowledgeApi';
 
 export const useCodeTasksAIAnswer = () => {
-  const [results, setResults] = useState<Record<string, CodeTasksAIResult>>({});
+  const [results, setResults] = useState<Record<string, CodeTasksResult>>({});
   const [loadingIds, setLoadingIds] = useState<Record<string, boolean>>({});
 
-  const sendAnswer = async (topicId: string, codeTaskId: string, code: string) => {
+  const sendAnswer = async (
+    topicId: string,
+    codeTaskId: string,
+    code: string,
+    referenceSolution: string,
+  ) => {
     const toastId = toastLoading('Sending response...');
 
     setLoadingIds((prev) => ({
@@ -20,9 +25,19 @@ export const useCodeTasksAIAnswer = () => {
     }));
 
     try {
-      const response = await postCodeTasksAI(topicId, codeTaskId, code);
+      let response;
 
-      toastSuccess(toastId, 'The answer has been verified');
+      if (referenceSolution) {
+        response = await postCodeTasksDragDrop(topicId, codeTaskId, code);
+      } else {
+        response = await postCodeTasksAI(topicId, codeTaskId, code);
+      }
+
+      if (response.valid) {
+        toastSuccess(toastId, 'Your answer is correct');
+      } else {
+        toastError(toastId, 'Your answer is incorrect');
+      }
 
       setResults((prev) => ({
         ...prev,

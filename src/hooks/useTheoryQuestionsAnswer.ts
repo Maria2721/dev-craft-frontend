@@ -22,11 +22,15 @@ export const useTheoryQuestionsAnswer = () => {
     try {
       const response = await postTheoryQuestions(topicId, questionId, selectedOptionIds);
 
-      toastSuccess(toastId, 'The answer has been verified');
-
       const question = response.results.find((el) => el.questionId === questionId);
 
       if (!question) return;
+
+      if (question.isCorrect) {
+        toastSuccess(toastId, 'Your answer is correct');
+      } else {
+        toastError(toastId, 'Your answer is incorrect');
+      }
 
       setResults((prev) => ({
         ...prev,

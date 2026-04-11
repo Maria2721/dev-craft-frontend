@@ -197,9 +197,29 @@ interface CodeTasks {
 }
 
 interface CodeCardProps {
+  id: string;
   title: string;
   description: string;
   taskType: 'AI_CHECK' | 'DRAG_DROP';
+  code: string;
+  result: CodeTasksAIResult;
+  loading: boolean;
+  onChange: (code: string) => void;
+  onSubmit: () => void;
+}
+
+interface CodeTasksAIResponse {
+  codeTaskId: string;
+  attemptId: string;
+  valid: boolean;
+  hints: string;
+  justification: string;
+  improvements: string;
+}
+
+interface CodeTasksAIResult {
+  isCorrect: boolean;
+  hints?: string;
 }
 
 export type {
@@ -212,6 +232,8 @@ export type {
   AuthState,
   CodeCardProps,
   CodeTasks,
+  CodeTasksAIResponse,
+  CodeTasksAIResult,
   CustomAxiosRequestConfig,
   LocationState,
   LoginFormInputs,

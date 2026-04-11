@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.8.0-rc.3",
     "@reduxjs/toolkit": "^2.11.2",
     "@xyflow/react": "^12.10.2",
     "axios": "^1.13.5",

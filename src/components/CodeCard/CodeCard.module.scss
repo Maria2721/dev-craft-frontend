@@ -16,7 +16,6 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 10px;
-  color: var(--color-primary-purple);
 }
 
 .description {
@@ -52,13 +51,43 @@
   }
 }
 
-.content {
-  padding: 12px;
+.editorBlock {
+  padding: 16px;
   border-radius: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-text);
+  font-size: 14px;
+
+  transition: 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-primary-blue);
+  }
+
+  &:focus-within {
+    border-color: var(--color-primary-blue);
+  }
+}
+
+.editorContent {
+  background: var(--color-surface);
+  margin-bottom: 10px;
+}
+
+.editorFooter {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: var(--color-surface);
-  border: 1px dashed var(--color-text);
-  font-size: 14px;
+  gap: 12px;
+}
+
+.result {
+  font-weight: 600;
+}
+
+.success {
+  color: var(--color-primary-green);
+}
+
+.error {
+  color: var(--color-primary-pink);
 }

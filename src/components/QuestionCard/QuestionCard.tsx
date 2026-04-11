@@ -52,7 +52,7 @@ export const QuestionCard = ({
       <div className={styles.actions}>
         <Button
           onClick={onCheck}
-          disabled={!selectedAnswers.length || result?.isCorrect}
+          disabled={!selectedAnswers.length || result?.isCorrect || loading}
           variant="primary"
           size="sm"
         >
